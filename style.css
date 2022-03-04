@@ -1,0 +1,419 @@
+/* ******************** Reset ******************** */
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* ******************** Fonts ******************** */
+@font-face {
+    font-family: "inter";
+    src: url(fonts/Inter-Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: "inter";
+    src: url(fonts/Inter-Bold.ttf);
+    font-weight: 700;
+}
+/* ******************** Variables ******************** */
+:root {
+    --body-bgColor-light: hsl(0, 0%, 100%);
+    --body-bgColor-dark: hsl(230, 17%, 14%);
+    --header-bgColor-light: hsl(225, 100%, 98%);
+    --header-bgColor-dark: hsl(232, 19%, 15%);
+    --toggle-bgColor-dark: linear-gradient(hsl(210, 78%, 56%) , hsl(146, 68%, 55%));
+    --box-bgColor-light: hsl(227, 47%, 96%);
+    --box-bgColorHover-light: hsl(232, 33%, 91%);
+    --box-bgColor-dark : hsl(228, 28%, 20%);
+    --box-bgColorHover-dark : hsl(228, 25%, 27%);
+    --text-color: hsl(228, 12%, 44%);
+    --face-book: hsl(208, 92%, 53%);
+    --twitter: hsl(203, 89%, 53%);
+    --instagram : linear-gradient(to right, hsl(37, 97%, 70%) , hsl(329, 70%, 58%));
+    --you-tube: hsl(348, 97%, 39%);
+    --arrow-up: hsl(163, 72%, 41%);
+    --arrow-down: hsl(356, 69%, 56%);
+}
+/* ******************** Global ******************** */
+body {
+    background-color: var(--body-bgColor-light);
+    font-family: "inter";
+    min-width: 375px;
+}
+.container {
+    width: 100%;
+    max-width: 510px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+main {
+    margin-bottom: 2rem;
+}
+/* ******************** Header ******************** */
+.header-backgruond {
+    width: 100%;
+    height: 235px;
+    border-radius: 0 0 20px 20px;
+    position: absolute;
+    background-color: var(--header-bgColor-light);
+    z-index: -1;
+}
+.header {
+    padding-top: 2.25rem;
+    display: flex;
+    flex-direction: column;
+}
+.header__title-wrapper {
+    border-bottom: 1px solid hsl(229, 19%, 59%);
+    padding-bottom: 1.5rem;
+}
+.header__title-wrapper h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(230, 17%, 14%);
+}
+.header__title-wrapper small {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+.header__mode-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+.header__mode-wrapper > span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+.toggle-box {
+    width: 48px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+}
+.toggle-box > input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 12px;
+    background: hsl(230, 22%, 74%);
+}
+.toggle::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #F1F3FA;
+    transition: right .3s linear;
+}
+.toggle-box > input:checked + .toggle {
+    background: var(--toggle-bgColor-dark);
+}
+.toggle-box > input:checked + .toggle::before {
+    background-color: hsl(228, 25%, 27%);
+    right: 27px;
+}
+@media screen and (min-width: 768px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .header__title-wrapper {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .header__title-wrapper h1 {
+        font-size: 1.75rem;
+    }
+    .header__mode-wrapper > span {
+        margin-right: .7rem;
+    }
+}
+/* ******************** Social Media ******************** */
+.social-media {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5rem 0;
+}
+.social-media__box {
+    background-color: var(--box-bgColor-light);
+    border-radius: 5px;
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color .3s linear;
+}
+.social-media__box:hover {
+    background-color: var(--box-bgColorHover-light);
+}
+.social-media__box__border {
+    height: 4px;
+    position: relative;
+    top: -2rem;
+}
+.social-media--face-book .social-media__box__border {
+    background: var(--face-book);
+}
+.social-media--twitter .social-media__box__border {
+    background: var(--twitter);
+}
+.social-media--instagram .social-media__box__border {
+    background: var(--instagram);
+}
+.social-media--you-tube .social-media__box__border {
+    background: var(--you-tube);
+}
+.social-media__box__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.75rem;
+}
+.social-media__box__title__logo {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: .5rem;
+}
+.social-media--face-book .social-media__box__title__logo {
+    background-image: url(images/icon-facebook.svg);
+}
+.social-media--twitter .social-media__box__title__logo {
+    background-image: url(images/icon-twitter.svg);
+    background-repeat: no-repeat;
+}
+.social-media--instagram .social-media__box__title__logo {
+    background-image: url(images/icon-instagram.svg);
+}
+.social-media--you-tube .social-media__box__title__logo {
+    background-image: url(images/icon-youtube.svg);
+}
+.social-media__box__title__id {
+    font-size: .75rem;
+    font-weight: 700;
+    color: hsl(228, 12%, 44%);
+}
+.social-media__box__followers {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+.social-media__box__followers__number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: hsl(230, 17%, 14%);
+}
+.social-media__box__followers__text {
+    font-size: .75rem;
+    color: hsl(228, 12%, 44%);
+    letter-spacing: .3rem;
+    text-transform: uppercase;
+}
+.social-media__box__today {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social-media__box__today__arrow {
+    width: 8px;
+    height: 4px;
+    margin-right: 4px;
+}
+.social-media__box__today__arrow--up {
+    background: url(images/icon-up.svg);
+}
+.social-media__box__today__arrow--down {
+    background: url(images/icon-down.svg);
+}
+.social-media__box__today__text {
+    font-size: .75rem;
+    font-weight: 700;
+}
+.social-media__box__today__arrow--up + .social-media__box__today__text {
+    color: var(--arrow-up);
+}
+.social-media__box__today__arrow--down + .social-media__box__today__text {
+    color: var(--arrow-down);
+}
+@media screen and (min-width: 768px) {
+    .social-media {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .social-media__box {
+        width: 49%;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .social-media__box {
+        width: 24%;
+    }
+}
+/* ******************** Overview ******************** */
+.Overview__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1.6rem;
+}
+.Overview__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.Overview__box {
+    background-color: var(--box-bgColor-light);
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: background-color .3s linear;
+}
+.Overview__box:hover {
+    background-color: var(--box-bgColorHover-light);
+}
+.Overview__box__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+.Overview__box__top__text {
+    font-size: .8rem;
+    font-weight: 700;
+    color: hsl(228, 12%, 44%);
+}
+.Overview__box__top__logo {
+    width: 20px;
+    height: 20px;
+}
+.Overview__box__top__logo--face-book {
+    background: url(images/icon-facebook.svg);
+}
+.Overview__box__top__logo--instagram {
+    background: url(images/icon-instagram.svg);
+}
+.Overview__box__top__logo--twitter {
+    background: url(images/icon-twitter.svg) no-repeat;
+}
+.Overview__box__top__logo--you-tube {
+    background: url(images/icon-youtube.svg);
+}
+.Overview__box__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.Overview__box__bottom__number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: hsl(230, 17%, 14%);
+}
+.Overview__box__bottom__improve__arrow {
+    display: inline-block;
+    width: 8px;
+    height: 4px;
+    margin-bottom: 2px;
+}
+.Overview__box__bottom__improve__arrow--up {
+    background: url(images/icon-up.svg);
+}
+.Overview__box__bottom__improve__arrow--down {
+    background: url(images/icon-down.svg);
+}
+.Overview__box__bottom__improve__number {
+    font-size: .75rem;
+    font-weight: 700;
+}
+.Overview__box__bottom__improve__arrow--up + .Overview__box__bottom__improve__number {
+    color: var(--arrow-up);
+}
+.Overview__box__bottom__improve__arrow--down + .Overview__box__bottom__improve__number {
+    color: var(--arrow-down);
+}
+@media screen and (min-width: 768px) {
+    .Overview__wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .Overview__box {
+        width: 49%;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .Overview__box {
+        width: 24%;
+    }
+}
+/* ******************** Dark Mode ******************** */
+body.dark {
+    background-color: var(--body-bgColor-dark);
+}
+.dark .header-backgruond {
+    background-color: var(--header-bgColor-dark);
+}
+.dark .header__title-wrapper h1 {
+    color: hsl(0, 0%, 100%);
+}
+.dark .header__title-wrapper {
+    border-bottom: 1px solid hsl(228, 25%, 27%);
+}
+.dark .social-media__box {
+    background-color: var(--box-bgColor-dark);
+}
+.dark .social-media__box:hover {
+    background-color: var(--box-bgColorHover-dark);
+}
+.dark .social-media__box__followers__number {
+    color: hsl(0, 0%, 100%);
+}
+.dark .social-media__box__followers__text {
+    color: hsl(228, 34%, 66%);
+}
+.dark .Overview__title {
+    color: hsl(0, 0%, 100%);
+}
+.dark .Overview__box {
+    background-color: var(--box-bgColor-dark);
+}
+.dark .Overview__box:hover {
+    background-color: var(--box-bgColorHover-dark);
+}
+.dark .Overview__box__bottom__number {
+    color: hsl(0, 0%, 100%);
+}
+@media screen and (min-width: 768px) {
+    .dark .header__title-wrapper {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
